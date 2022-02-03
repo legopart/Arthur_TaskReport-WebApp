@@ -157,7 +157,7 @@
             <p class="thanks">
                     Thanks For Usage.<br />
                     Version (0.1.0) Develop by (Arthur Zarankin) For (Haim, Zionet). 
-                    <a href="https://github.com/w3arthur/TaskReport" target="_blank">GitHub</a> .<br />
+                    <a href="https://github.com/w3arthur/TaskReport/" target="_blank">GitHub</a> .<br />
             </p>
 
         </div>
