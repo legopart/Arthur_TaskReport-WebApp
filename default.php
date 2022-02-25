@@ -13,25 +13,12 @@
     <meta charset="utf-8" />
     <title>Task Report - Zionet</title>
     <style>
-     
-        body{
-            background-color: rgb(67, 83, 134);
-            color:rgb(12, 85, 12); }
+        body{ background-color: rgb(67, 83, 134); color:rgb(12, 85, 12); }
+        h1, .thanks{ color:rgb(154, 218, 154); }
+        .thanks a{ color: rgba(164, 233, 201, 0.4); }
+        .database_result{ color: rgb(34, 152, 207); } 
 
-        h1, .thanks{
-            color:rgb(154, 218, 154); }
-
-        .thanks a{
-            color: rgba(164, 233, 201, 0.4); }
-        .database_result{
-             color: rgb(34, 152, 207); } 
-
-        input, select{
-            font-weight: bold;
-            color:rgb(0, 122, 0);
-            background-color: rgba(252, 253, 242, 0.918);
-            text-align: center;
-         }
+        input{ font-weight: bold; color:rgb(0, 122, 0); background-color: rgba(252, 253, 242, 0.918); text-align: center; }
 
         li { margin: 5px; }
 
@@ -64,7 +51,7 @@
         .s25percent{ width: 22%; }
         .s40percent{ width: 34%; }
         .s50percent{ width: 45%; }
-        .s60percent{ width: 56%; }
+        .s60percent{ width: 54%; }
 
         /* in the end affect */
         .center{ text-align: center; }
@@ -85,30 +72,33 @@
                         <p class="row">
                             
                             <div class="row">
-                                <select class="s40percent" name="task_status">
-                                    <option value="develop">- Develop</option>
-                                    <option value="moretime">x Issued</option>
-                                    <option value="done">v Finished</option>
-                                </select>
-                        
-                                <input class="s40percent" type="text" name="name" placeholder="YourName" maxlength="20" />
-
-                                <input class="s20percent" type="submit" value="add" />
+                                <div class="s60percent">
+                                <input class="row95" type="text" name="name" placeholder="YourName" maxlength="20" />
+                                </div>
+                                <div class="s40percent">
+                                <button  class="row95 red" type="submit" name="task_status" value="moretime">✘✍</button>>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="s60percent">
 
-                            <div class="row95">
+                                    <input class="row95" type="text" name="comment" placeholder="Comments" maxlength="80" />
+                                </div>
 
-                                <input type="text" name="comment" placeholder="Comments" maxlength="80" />
-                                
-                                <?php
-                                        if( postSet('task_status') &&postSet('name')  &&postSetEmpty('comment') ){
-                                            $results =  queryStmt("INSERT INTO `tasks` (`name`, `status`, `comment`, `closed`) VALUES (?, ?, ?, 'open');",
-                                            array( postSet('name'), postSet('task_status'),  postSet('comment') ) );
-                                            if($results){echo "<br /> <div class=\"database_result\">database inserted <br /></div>";}}
-                                ?>
-
+                                <div class="s40percent">
+                                    
+                                    <button class="row95 yellow" type="submit" name="task_status" value="develop">⌛✍</button>
+                                </div>
                             </div>
-
+                            <div class="row">
+                                <button class="s40percent green" type="submit" name="task_status" value="done">√✍</button><br />
+                                    <?php
+                                            if( postSet('task_status') &&postSet('name')  &&postSetEmpty('comment') ){
+                                                $results =  queryStmt("INSERT INTO `tasks` (`name`, `status`, `comment`, `closed`) VALUES (?, ?, ?, 'open');",
+                                                array( postSet('name'), postSet('task_status'),  postSet('comment') ) );
+                                                if($results){echo "<br /> <div class=\"database_result\">database inserted <br /></div>";}}
+                                    ?>
+                            </div>
                         </p>
                     </form>
 
